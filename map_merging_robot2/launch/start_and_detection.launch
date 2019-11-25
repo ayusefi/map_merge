@@ -1,0 +1,23 @@
+<?xml version='1.0'?>
+
+<launch>
+  <!-- Start Turtlebot -->
+
+<include file="$(find turtlebot_bringup)/launch/minimal.launch">
+</include>
+
+<!-- launch 3d sensor -->
+  <include file="$(find turtlebot_bringup)/launch/3dsensor.launch">
+  </include>
+
+<!-- launch logitech -->
+  <include file="$(find turtlebot_teleop)/launch/logitech.launch">
+  </include>
+
+
+  <node pkg="map_merging2" name="image_converter" type="detector.py"/>
+  <node pkg="map_merging2" name="coordinate_detection" type="localizer.py"/>
+  <node pkg="map_merging2" name="blue_obj" type="blue_obj"/>
+
+
+</launch>
