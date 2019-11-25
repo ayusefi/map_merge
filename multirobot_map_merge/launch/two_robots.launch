@@ -1,0 +1,47 @@
+<!--
+  Launch file for running the multirobot simulation on gazebo
+ -->
+
+<!-- Launches Kobuki Gazebo simulation in an empty world -->
+<launch>
+  <!-- start Gazebo with an empty world -->
+
+  
+  
+  
+
+  <!-- spawn robot 1-->
+
+  
+
+  
+  
+  <!-- spawn robot 2-->
+
+  
+  
+ 
+  
+  
+  
+  
+  
+  
+  
+
+
+  <!-- This is required for the map merger (know inital position case)-->
+  <include file="$(find multirobot_map_merge)/launch/experiments/2_robots.launch"/>
+  <!-- transformation between robots-->
+  <node pkg="tf" type="static_transform_publisher" name="map_merge_to_map" args="-25.625 -25.625 0 0 0 0 1 /map_merge/map map 100" />
+
+  <!-- map merger-->
+  <include file="$(find multirobot_map_merge)/launch/map_merge.launch"/>
+
+
+
+  <!-- run RViz node (visualization) -->
+  <node pkg="rviz" type="rviz" name="rviz" args="-d $(find multirobot_map_merge)/launch/two.rviz"/>
+  
+  
+</launch>
